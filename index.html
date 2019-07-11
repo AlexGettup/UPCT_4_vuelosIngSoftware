@@ -145,9 +145,9 @@
 
 							<td>{{ x[0].vuelo }} / {{ x[2] }}</td>
 							<td>{{ x[1].vuelo }} / {{ x[3] }}</td>
-							<td>{{ x[4][0] * nPasajeros}}€ <input type="radio" name="opcion" value="{}"></td>
-							<td>{{ x[4][1] * nPasajeros}}€ <input type="radio" name="opcion" value="{{ x[4][1] * nPasajeros}}"></td>
-							<td>{{ x[4][2] * nPasajeros}}€ <input type="radio" name="opcion" value="{{ x[4][2] * nPasajeros}}"></td>
+							<td>{{ x[4][0] * nPasajeros}}€<br>{{x[0].plazas_business}} plazas disponibles ida<br>{{x[1].plazas_business}} plazas disponibles vuelta<input type="radio" name="opcion" value="{{ x[4][0] * nPasajeros}}" ng-show="!{{x[0].plazas_business}} > {{nPasajeros}} || {{x[1].plazas_business}} > {{nPasajeros}}"></td>
+							<td>{{ x[4][1] * nPasajeros}}€<br>{{x[0].plazas_optima}} plazas disponibles ida<br>{{x[1].plazas_optima}} plazas disponibles vuelta<input type="radio" name="opcion" value="{{ x[4][1] * nPasajeros}}" ng-show="!{{x[0].plazas_optima}} > {{nPasajeros}} || {{x[1].plazas_optima}} > {{nPasajeros}}" > </td>
+							<td>{{ x[4][2] * nPasajeros}}€<br>{{x[0].plazas_economy}} plazas disponibles ida<br>{{x[1].plazas_economy}} plazas disponibles vuelta<input type="radio" name="opcion" value="{{ x[4][2] * nPasajeros}}" ng-show="!{{x[0].plazas_economy}} > {{nPasajeros}} || {{x[1].plazas_economy}} > {{nPasajeros}}" ></td>
 							<td><button class="home_search_button_2" type="button" ng-click="procesarCompra()">Comprar</button></td>
 						</form>
 					</tr>

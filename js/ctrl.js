@@ -1,4 +1,5 @@
 'use strict';
+var npasa = 0;
 
 angular.module('VUELOS', [])
     .controller('MainCtrl', function ($scope, $http) {
@@ -37,7 +38,7 @@ angular.module('VUELOS', [])
 
             var selectedIda = new Date($scope.fechaIda);
             var selectedVuelta = new Date($scope.fechaVuelta);
-
+            npasa=$scope.nPasajeros;
             var idas = [];
             var vueltas = [];
 
@@ -67,7 +68,6 @@ angular.module('VUELOS', [])
                     });
                     angular.forEach($scope.seleccionIda, function(v) {
                         angular.forEach($scope.seleccionVuelta, function(w) {
-                            console.log(v);
                             var idaTabla = new Date(v.salida);
                             var vueltaTabla = new Date(w.salida);
                             var horaIda = (idaTabla.getHours() == 0 ? '00' : idaTabla.getHours()) + ":" + (idaTabla.getMinutes() == 0 ? '00' : idaTabla.getMinutes());
@@ -148,7 +148,7 @@ angular.module('VUELOS', [])
             $scope.vuelosAerolinea = [];
             $http({
                 method: 'GET',
-                url: 'http://192.168.1.151:3000/login',
+                url: 'http://localhost:3000/login',
                 params: {id: $scope.id, passwd: $scope.passwd}
             }).then(function successCallback(response) {
                     $scope.respuestaLogin = response.data.data[0].n;
@@ -174,16 +174,15 @@ angular.module('VUELOS', [])
         //mostrar vuelos login
         $scope.reslogin = function () {
             var mostrarvuelos = false;
-            $scope.haylogin = true;
-            $scope.errorlogin  = false;
+
             if($scope.respuestaLogin  == 0){
                 mostrarvuelos = false;
-                $scope.noLogin  = true;
-                $scope.silogin = true;
+                $scope.errorlogin  = true;
+                $scope.haylogin = true;
             }else if($scope.respuestaLogin  == 1){
                 mostrarvuelos = true;
-                $scope.silogin = false;
-                $scope.noLogin  = false;
+                $scope.haylogin = false;
+                $scope.errorlogin  = false;
             }
             return mostrarvuelos;
         };
@@ -218,12 +217,16 @@ angular.module('VUELOS', [])
             }
             return isFilled;
         };
+
+        $scope.procesarCompra = function(){
+            window.location.href = "./compra_billetes.html";
+        };
 //consulta reserva
         $scope.consultarReserva = function ()
         {
             $http({
                 method: 'GET',
-                url: 'http://192.168.1.151:3000/reserva',
+                url: 'http://localhost:3000/reserva',
                 params: {cod_reserva: cod_reserva}
             }).then(function successCallback(response) {
                 angular.forEach(response.data.data, function (v){
@@ -231,7 +234,7 @@ angular.module('VUELOS', [])
                 });
             }, function errorCallback(response) {
             });
-        }
+        };
         $scope.resconsulta = function () {
             var isFilled = false;
             if($scope.consultaReserva  === undefined || $scope.consultaReserva.length == 0){
@@ -242,6 +245,33 @@ angular.module('VUELOS', [])
 
             }
             return isFilled;
+        };
+
+        //registro pasajeros
+        $scope.registro_pasajero = function ()
+
+        {
+            location.reload();
+
+            $http({
+                method: 'POST',
+                url: 'http://localhost:3000/pasajeros',
+                params: {numero: npasa, nombre: $scope.pnombre, apellidos: $scope.papellido}
+            }).then(function successCallback(response) {
+
+            }, function errorCallback(response) {
+            });
+
+            $http({
+                method: 'POST',
+                url: 'http://localhost:3000/pasajeros',
+                params: {numero: npasa, nombre: $scope.pnombre, apellidos: $scope.papellido}
+            }).then(function successCallback(response) {
+
+
+            }, function errorCallback(response) {
+            });
+
         };
         //Funcion de inicio
         var init = function() {
@@ -254,7 +284,7 @@ angular.module('VUELOS', [])
             $scope.seleccionVuelos = [];
 
             $scope.consultaReserva = [];
-            $scope.respuestaLogin =[];
+            $scope.respuestaLogin = -1;
 
             $scope.vuelosAerolinea=[];
 

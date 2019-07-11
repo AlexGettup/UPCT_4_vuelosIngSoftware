@@ -75,15 +75,28 @@
 					<div class="home_search_container">
 						<div class="home_search_title">Encuentra tu Vuelo</div>
 						<div class="home_search_content">
-							<form novalidate name="dataFormC" action="#" class="home_search_form" id="home_search_form">
+							<form novalidate name="registroFormC" action="#" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
 									<div class="table-responsive-md">
 										<table>
-
-
+											<tr>
+												<td>Nombre: </td>
+											</tr>
+											<tr>
+												<td><input type="text" name="pnombre" ng-model="pnombre" required></td>
+											</tr>
+											<tr>
+												<td>Apellidos: </td>
+											</tr>
+											<tr>
+												<td><input type="text" name="papellido" ng-model="papellido" required></td>
+											</tr>
+											<tr>
+												<td><button class="home_search_button" type="button" ng-click="registro_pasajero()" >Enviar</button></td>
+											</tr>
 										</table>
 									</div>
-									<button class="home_search_button" type="button" ng-click="buscarVuelos()" ng-show="!(dataFormC.$invalid || dataFormC.$pristine || fechaIda > fechaVuelta)">Buscar vuelos</button>
+
 								</div>
 							</form>
 						</div>
