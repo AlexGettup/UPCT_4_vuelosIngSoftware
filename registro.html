@@ -1,0 +1,169 @@
+	<!DOCTYPE html>
+<html lang="es" ng-app="VUELOS">
+<head>
+<title>Reserva de vuelos</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/news.css">
+<link rel="stylesheet" type="text/css" href="styles/news_responsive.css">
+<link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body ng-controller="MainCtrl">
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+							<div class="logo"><a href="index.html"><img src="images/logo.png" class="img-fluid" alt="logo"></a></div>
+							<nav class="main_nav">
+								<ul class="d-flex flex-row align-items-start justify-content-start">
+									<li><a href="index.html">Inicio</a></li>
+									<li><a href="consultar.html">Consultar Reserva</a></li>
+									<li class="active"><a href="aerolineas.html">Aerolineas</a></li>
+									<li><a href="#contacto">Contacto</a></li>
+								</ul>
+							</nav>
+							<div class="header_phone ml-auto">RESERVA TU VUELO YA</div>
+
+							<!-- Hamburger -->
+							<div class="hamburger ml-auto">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu">
+		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
+			<div class="menu_logo"><a href="index.html"><img src="images/logo.png" class="img-fluid" alt="logo"></a></div>
+			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
+		</div>
+		<div class="menu_content">
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="consultar.html">Consultar Reserva</a></li>
+				<li><a href="aerolineas.html">Aerolineas</a></li>
+				<li><a href="#contacto">Contacto</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Home -->
+	<div class="home">
+		<div class="background_image" style="background-image:url(images/faro.jpg)"></div>
+	</div>
+
+	<!-- Busqueda de vuelos -->
+	<div class="home_search">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_search_container">
+						<div class="home_search_title">Encuentra tu Vuelo</div>
+						<div class="home_search_content justify-content-center align-content-center">
+							<form novalidate name="registroFormD" action="#" class="home_search_form justify-content-center" id="home_search_form">
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+									<div class="table-responsive-md">
+										<table>
+											<tr>
+												<td>Identificador(2 primeros digitos del id de Vuelo): </td>
+											</tr>
+											<tr>
+												<td><input type="text" ng-model="idaerolinea" name="idaerolineaD" required></td>
+											</tr>
+											<tr>
+												<td>Nombre de la Aerolinea: </td>
+											</tr>
+											<tr>
+												<td><input type="text" ng-model="nameaerolinea" name="nameaerolineaD" required></td>
+											</tr>
+											<tr>
+												<td>Clave: </td>
+											</tr>
+											<tr>
+												<td><input type="password" ng-model="passwdaerolinea" name="passwdaerolineaD" required></td>
+											</tr>
+											<tr>
+												<td><button class="home_search_button" type="button" ng-click="registro_aero()" ng-show="!(registroFormD.$invalid || registroFormD.$pristine)" >Enviar</button></td>
+											</tr>
+										</table>
+									</div>
+
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- News -->
+
+
+
+	<!-- Footer -->
+
+	<footer class="footer" id="footer">
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/footer_1.jpg" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="newsletter">
+						<div class="newsletter_title_container text-center">
+							<div class="newsletter_title">Segundo Trabajo de Laboratorio de Ingeniería de Software</div>
+							<div class="newsletter_subtitle"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row footer_contact_row">
+				<div class="col-xl-4 offset-xl-5">
+					<div class="row">
+						<div class="footer_contact_col" id="contacto">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center ">
+								<div class="footer_contact_icon"><img src="images/around.svg" alt=""></div>
+								<div class="footer_contact_title">Contacto</div>
+								<div class="footer_contact_list">
+									<ul style="max-width:190px">
+										<li>victor.garciaj@edu.upct.es</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col text-center">Copyright &copy;<script>document.write(new Date().getFullYear());</script>  Victor García, Alejandro Nicolás, Antonio Rosique, Maribel Rubio</div>
+	</footer>
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="js/news.js"></script>
+
+<!-- nuestros scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="js/ctrl.js"></script>
+</body>
+</html>
