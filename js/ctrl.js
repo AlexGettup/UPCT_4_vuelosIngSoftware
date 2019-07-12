@@ -157,7 +157,7 @@ angular.module('VUELOS', [])
                 {
                     $http({
                         method: 'GET',
-                        url: 'http://192.168.1.151:3000/vuelosaerolinea',
+                        url: 'http://localhost:3000/vuelosaerolinea',
                         params: {id: $scope.id}
                     }).then(function successCallback(response) {
                         angular.forEach(response.data.data, function (v){
